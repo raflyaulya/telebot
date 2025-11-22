@@ -69,6 +69,11 @@ def handle_text(message):
         result = reverse_text(content) 
         bot.reply_to(message, result)
 
+    elif lower_text.startswith('capitalize:'):
+        content = text.split(':', 1)[1].strip() 
+        if not content: 
+            bot.reply_to(message, 'ada teksnya??')
+
     else: 
         # default echo handler 
         bot.reply_to(message,
