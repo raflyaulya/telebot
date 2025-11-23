@@ -1,7 +1,6 @@
 # entry point 
 
-from bot import bot as teleChatbot
-import telebot
+from telebot import TeleBot, types
 import os 
 from dotenv import * 
 from fastapi import FastAPI, Request
@@ -48,6 +47,6 @@ def set_webhook():
 async def telegram_webhook(request: Request): 
     # endpoint yg dipanggil telegram setiap ada update 
     data = await request.json() 
-    update= telebot.types.Update.de_json(data) 
+    update= types.Update.de_json(data) 
     bot.process_new_updates([update]) 
     return {'ok': True}
