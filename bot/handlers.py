@@ -1,6 +1,8 @@
-from . import bot 
+# from . import bot 
+from bot import bot 
 from utils.text_utils import to_uppercase, to_lowercase, reverse_text
 
+# START command
 @bot.message_handler(commands=['start']) 
 def handle_start(message): 
     bot.reply_to(
@@ -12,6 +14,7 @@ def handle_start(message):
         'ketik /help - lihat bantuan.')
         )
     
+# HELP command
 @bot.message_handler(commands=['help']) 
 def handle_help(message): 
     bot.reply_to(
@@ -30,7 +33,7 @@ def handle_stop(message):
     bot.reply_to(message, 'I am stopping bow, see u next time!!') 
     bot.stop_polling()
 
-
+# fallback handler for all text messages
 @bot.message_handler(func=lambda message: True) 
 def handle_text(message): 
     '''handler untuk semua pesan text (fallback)''' 
