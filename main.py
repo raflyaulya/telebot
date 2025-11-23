@@ -2,13 +2,14 @@
 
 from bot import bot as teleChatbot
 import telebot
-import bot.handlers  # register all handlers: IMPORTANT!!
 import os 
 from dotenv import * 
 from fastapi import FastAPI, Request
 import uvicorn
 
 from bot import bot 
+from bot.handlers import register_handlers   # register all handlers: IMPORTANT!!
+register_handlers(bot)
 
 load_dotenv(find_dotenv())
 
@@ -18,6 +19,7 @@ BASE_URL = os.getenv('BASE_URL')
 if not TELEGRAM_API:
     raise ValueError('Oops... There\'s something wrong with your TELEGRAM_API token!\nPlease, check it again.')
 
+# ==========================================================
 # FastAPI app instance STARTING POINT
 app = FastAPI()
 
