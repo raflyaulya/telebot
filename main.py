@@ -23,18 +23,19 @@ async def home():
 @app.on_event("startup")
 async def startup_event():
     if not BASE_URL:
-        print("ERROR: BASE_URL belum di-set")
+        # print("ERROR: BASE_URL belum di-set")   
+        print("BASE_URL is not set! please set it in .env file")   
         return
     
-    webhook_url = f"{BASE_URL}/webhook/{TELEGRAM_API}"
+    webhook_url = f"{BASE_URL}/webhook"  # bagian ini udah diganti
     print("Setting webhook :", webhook_url)
 
     bot.remove_webhook()
     bot.set_webhook(url=webhook_url)
 
 # endpoint dipanggil Telegram
-@app.post(f"/webhook/{TELEGRAM_API}")
-async def telegram_update(request: Request):
+@app.post(f"/webhook")
+async def telegram_webhook(request: Request):
     data = await request.json()
     update = types.Update.de_json(data)
     bot.process_new_updates([update])
