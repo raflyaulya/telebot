@@ -1,4 +1,5 @@
 # text utils untuk mengubah atau setup gaya huruf/text
+# u can edit or add more functions n something lah, just have fun :)
 
 def to_uppercase(text): 
     '''mengubah semua text jadi uppercase''' 
