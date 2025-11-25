@@ -4,12 +4,13 @@ import os
 from telebot import types
 from bot.bot_instance import bot
 from bot.handlers import register_handlers
+from utils.config import *
 
 
-load_dotenv(find_dotenv())
+# load_dotenv(find_dotenv())
 
-TELEGRAM_API = os.getenv("TELEGRAM_API")
-BASE_URL = os.getenv("BASE_URL")
+# TELEGRAM_API = os.getenv("TELEGRAM_API")
+# BASE_URL = os.getenv("BASE_URL")
 
 app = FastAPI()
 
